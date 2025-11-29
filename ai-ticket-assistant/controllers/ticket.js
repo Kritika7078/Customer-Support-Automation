@@ -89,7 +89,7 @@ export const getTicket = async (req, res) => {
     ticket = await Ticket.findOne({
       createdBy: user._id,
       _id: id,
-    }).select("title description status createdAt priority assignedTo relatedSkills helpfulNotes"); // <-- ADD THESE FIELDS
+    }).select("title description status createdAt "); // <-- ADD THESE FIELDS
     // console.log("Logged-in User ID (req.user._id):", user._id.toString());
     // console.log("Ticket ID from params (id):", id);
   }

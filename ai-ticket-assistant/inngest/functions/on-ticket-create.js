@@ -64,7 +64,11 @@ export const onTicketCreated = inngest.createFunction(
             role: "admin",
           });
         }
-
+            if (user) {
+                console.log(`Fallback: Assigned ticket ${ticket._id} to Admin: ${user._id}`);
+            } else {
+                console.warn(`CRITICAL WARNING: No moderator or admin user found. Ticket remains unassigned (null).`);
+            }
         // Update the assignedTo field and the moderator's assigned ticket count
         await Ticket.findByIdAndUpdate(ticket._id, {
           assignedTo: user?._id || null,
